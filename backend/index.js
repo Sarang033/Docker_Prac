@@ -1,12 +1,14 @@
 import express from "express";
 import mongoose from "mongoose";
-
+import cors from "cors";
 
 const app = express();
 
 //middleware for parsing request body
 app.use(express.json());
 
+//Middleware for handling CORS Policy
+app.use(cors());
 
 const PORT = 5555;
 
