@@ -2,6 +2,7 @@
 services:
   # Backend services (server-side application)
   backend:
+    container_name: backend-container
     build: ./backend
     ports:
       - "5555:5555"
@@ -10,6 +11,11 @@ services:
 
   # Frontend services (client side application)
   frontend:
+    container_name: frontend-container
     build: ./frontend
     ports:
       - "5173:5173"
+    depends_on:
+      - backend  
+
+    
