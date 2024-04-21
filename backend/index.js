@@ -6,7 +6,6 @@ const app = express();
 
 //middleware for parsing request body
 app.use(express.json());
-
 //Middleware for handling CORS Policy
 app.use(cors());
 

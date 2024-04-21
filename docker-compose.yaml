@@ -1,0 +1,15 @@
+
+services:
+  # Backend services (server-side application)
+  backend:
+    build: ./backend
+    ports:
+      - "5555:5555"
+    environment:
+      MONGO_URI: "mongodb://sarangchamp2004:33333333@book-store-mern.89oe02b.mongodb.net/books-collevtion?retryWrites=true&w=majority&appName=Book-store-MERN"
+
+  # Frontend services (client side application)
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
