@@ -1,21 +1,26 @@
-
 services:
-  # Backend services (server-side application)
-  backend:
-    container_name: backend-container
-    build: ./backend
-    ports:
-      - "5555:5555"
-    environment:
-      MONGO_URI: "mongodb://sarangchamp2004:33333333@book-store-mern.89oe02b.mongodb.net/books-collevtion?retryWrites=true&w=majority&appName=Book-store-MERN"
-
-  # Frontend services (client side application)
+# Frontend services (client side application)
   frontend:
     container_name: frontend-container
     build: ./frontend
+    volumes:
+    - ./frontend:/app
+    - /app/node_modules
     ports:
-      - "5173:5173"
+      - 5173:5173
     depends_on:
-      - backend  
+      - backend
+    restart: always  
 
-    
+  # Backend services (server-side application)
+  backend:
+    container_name: backend-container
+    volumes:
+    - ./backend:/app
+    - /app/node_modules
+    build: ./backend
+    ports:
+      - 5555:5555
+    restart: always   
+    environment:
+      MONGO_URI: "mongodb://sarangchamp2004:33333333@book-store-mern.89oe02b.mongodb.net/books-collevtion?retryWrites=true&w=majority&appName=Book-store-MERN"
