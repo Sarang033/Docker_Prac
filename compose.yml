@@ -1,0 +1,14 @@
+services:
+  frontend:
+    image: sarang033/bookstore:frontend
+    ports:
+    - 5173:5173
+    depends_on:
+      - backend
+
+  backend:
+    image: sarang033/bookstore:backend
+    ports:
+    - 5555:5555
+    environment:
+      MONGO_URI: "mongodb://sarangchamp2004:33333333@book-store-mern.89oe02b.mongodb.net/books-collevtion?retryWrites=true&w=majority&appName=Book-store-MERN"
